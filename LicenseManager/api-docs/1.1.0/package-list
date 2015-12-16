@@ -1,0 +1,8 @@
+net.nicholaswilliams.java.licensing
+net.nicholaswilliams.java.licensing.encryption
+net.nicholaswilliams.java.licensing.exception
+net.nicholaswilliams.java.licensing.immutable
+net.nicholaswilliams.java.licensing.licensor
+net.nicholaswilliams.java.licensing.licensor.interfaces.cli
+net.nicholaswilliams.java.licensing.licensor.interfaces.cli.spi
+net.nicholaswilliams.java.licensing.licensor.interfaces.spi

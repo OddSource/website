@@ -1,0 +1,4 @@
+Please see the following release files:
+
+RELEASE_TC_LINUX.TXT - Release notes for Linux System Properties plugin
+RELEASE_TC_SBN.TXT - Release notes for Shared Build Number plugin

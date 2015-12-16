@@ -1,0 +1,177 @@
+--------------------------------------------------------------------------------
+Version 1.1.0 (build 1.1.0.177)
+--------------------------------------------------------------------------------
+ - FINAL (general availability) release for License Manager 1.1.0.
+
+ - Refactored the project structure to support Maven artifacts properly
+   separated into distinct feature sets.
+
+ - Changed the package names for the base UI and command-line UI modules.
+   Users should not be using these classes in your code, so this change should
+   not have any negative impacts.
+
+ - BREAKING: Moved PrivateKeyDataProvider and FilePrivateKeyDataProvider from
+   net.nicholaswilliams.java.licensing.licensor to
+   net.nicholaswilliams.java.licensing.encryption. This is a binary-incompatible
+   change resulting from the project restructure and reflects the correct
+   location for these classes. These classes still only exist in the
+   licensor artifact.
+
+ - Added cryptographic software notices in accordance with United States Export
+   regulations.
+
+ - Updated Javadoc to generate using the Java 7 compiler. License Manager is
+   still compiled with Java 6.
+
+--------------------------------------------------------------------------------
+Version 1.0.0 (build 1.0.0.122)
+--------------------------------------------------------------------------------
+ - FINAL (general availability) release for License Manager 1.0.0.
+
+ - Improved test code coverage.
+
+ - Replaced License.Builder#withFeature(...) methods with 
+   LicenseBuilder#addFeature(...) methods to more accurately reflect the effect
+   of calling those methods. The other with___ methods change some value in the
+   license, while the addFeature(...) methods have a cumulative effect on the
+   number of features in a license. The withFeature(...) methods have only been
+   deprecated, so this is a binary-compatible API change.
+
+--------------------------------------------------------------------------------
+Version 0.9.5-RC2 (build 0.9.5.105)
+--------------------------------------------------------------------------------
+ - This is the second and last planned candidate for release of License Manager
+   1.0. It contains some minor, binary-compatible changes to the API and two
+   issue fixes.
+
+ - Resolved LICEN-4, an issue whereby a java.lang.SecurityException was thrown 
+   when deserializing a SignedLicense object.
+
+ - Resolved LICEN-5, a usability issue possibly causing incorrectly-typed 
+   password because the ConsoleLicenseGenerator did not prompt for the user to
+   confirm the previously-typed password.
+
+ - Resolved LICEN-6, an issue whereby a java.lang.SecurityException was thrown 
+   if running two licensed applications in the same JVM but separate 
+   classloaders (i.e., multiple deployments in a single application server).
+
+ - Made DeserializingLicenseProvider's deserializing method public.
+
+ - Changed License.Feature to implement the FeatureObject interface.
+
+ - Improving verbosity of exceptions thrown by LicenseSecurityManager.
+ 
+ - Added check to LicenseManager#getLicense() to ensure context parameter is 
+   not null.
+
+ - Added ability to externally clear the license cache in LicenseManager.
+
+--------------------------------------------------------------------------------
+Version 0.9.4-RC1 (build 0.9.4.96)
+--------------------------------------------------------------------------------
+ - This is the first candidate for release of License Manager 1.0. It contains 
+   numerous additions and improvements to the interface of several classes, but
+   no breaking changes. Public/private keys and licenses generated with previous
+   versions of License Manager WILL work with this version.
+
+ - Resolved LICEN-2, an issue where the samples in 
+   net.nicholaswilliams.java.licensing.samples use the wrong encryption 
+   strength.
+
+ - Resolved LICEN-3, an issue with a NullPointerException in 
+   ConsoleRSAKeyPairGenerator.
+
+ - Added a public method to the LicenseManager class to make verifying the 
+   signature on individual licenses easier.
+
+ - Updated external resource URLs for Javadoc generation.
+
+ - Finished the text/console interface with addition of ConsoleLicenseGenerator.
+   In previous versions of License Manager, the text interface only generated
+   public/private keys and wrote them to files or generated providers as
+   requested. In this version, the text interface can also generate licenses.
+
+ - Added standard FilePublicKeyDataProvider and FilePrivateKeyDataProvider
+   classes, simple file-storage-based implementations of the key provider
+   classes that take a file or file name in the constructor and provide the key
+   by extracting it from the file.
+
+ - Added methods to the LicenseManager class that enable verification of license
+   signatures and extraction of license objects without going through the usual
+   retrieval and caching mechanisms (useful for checking that license data
+   is real/valid before allowing "installation" of a license in an application).
+
+ - Added the FeatureObject interface, which specifies that an object provides
+   a feature name in a standardized way. This is useful for using enums to 
+   represent features in the hasLicenseForFeature(), hasLicenseForAnyFeature()
+   and hasLicenseForAllFeatures() checks, instead of Strings. The enum need 
+   only implement this interface, and then enum constants can be passed to these
+   methods.
+
+ - Updated the LicenseSecurityManager to ensure compatibility with Java 7.
+   License Manager should work in Java 7 without issues, although it is compiled
+   in Java 6 for backwards compatibility.
+
+ - Improved unit test code coverage significantly. 100% of all classes (39/39),
+   99.1% of methods (335/338), and 90.7% (1507/1662) of the lines of code in 
+   License Manager are now covered by 540 unit tests. Most uncovered lines are
+   catch blocks that catch Java SE-thrown exceptions that are hard or impossible
+   to simulate without misconfiguring the Java virtual machines.
+
+ - Several minor bugs and/or malfunctions were found through unit testing in 
+   the process of completing unit test code coverage. These bugs have been 
+   resolved.
+
+--------------------------------------------------------------------------------
+Version 0.9.2-beta (build 0.9.2.72)
+--------------------------------------------------------------------------------
+ - BREAKING: Changed the LicenseCreator and LicenseManager to encrypt/decrypt 
+   licenses with a provider-based password instead of a default (hard-coded) 
+   password, with a fallback of using the same password as provided for the key.
+   See "Getting Started" or the documentation for help using this new pattern.
+
+ - BREAKING: Renamed interface KeyPasswordProvider to PasswordProvider to more 
+   accurately reflect its real purpose: a provider of passwords for public keys,
+   private keys or license data. Also renamed its sole method from 
+   getKeyPassword() to getPassword().
+
+ - BREAKING: To eliminate confusion and ambiguity, renamed
+   net.nicholaswilliams.java.licensing.Properties to LicenseManagerProperties and
+   net.nicholaswilliams.java.licensing.licensor.Properties to 
+   LicenseCreatorProperties.
+
+ - Changed the RSAKeyPairGenerator to enable using different passwords to
+   encrypt the public and private keys. This is an API-compatible change, as you
+   can still use one password for both.
+
+ - Improving test code coverage significantly.
+
+ - API documentation improvements.
+
+ - KNOWN ISSUE: A NullPointerException is encountered as the Command Line 
+   Interface exits key generation. Keys are still generated and saved properly.
+   This is a COSMETIC ONLY issue resolved in 0.9.4-beta.
+
+ - KNOWN ISSUE: The sample interface implementations provided in 
+   net.nicholaswilliams.java.licensing.samples use the pre-0.9.1-beta 256-bit 
+   encryption, and so will not decrypt in this release. This does not affect
+   library functionality, only samples. This issue is resolved in 0.9.4-beta.
+
+--------------------------------------------------------------------------------
+Version 0.9.1-beta (build 0.9.1.59)
+--------------------------------------------------------------------------------
+ - BREAKING: Resolved issue LICEN-1, a problem with unsupported encryption 
+   strength on Windows operating systems. Previous versions used a 256-bit 
+   encryption key, which is not supported on Windows without a special policy 
+   file. For portability, this version uses a 128-bit encryption key, which is 
+   portable to all operating systems. (Note that License Manager still uses 
+   2048-bit public/private keys; this has not changed.) Keys and licenses 
+   encrypted with 0.9.0-beta or earlier will not work in this release, and will 
+   need to be re-issued.
+
+ - API documentation improvements.
+
+--------------------------------------------------------------------------------
+Version 0.9.0-beta (build 0.9.0.56)
+--------------------------------------------------------------------------------
+ - Initial beta release with candidate API.

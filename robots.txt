@@ -1,0 +1,5 @@
+# Allow all crawlers access to certain pages.
+
+User-agent: *
+Disallow: /download/ 
+Disallow: /downloads/

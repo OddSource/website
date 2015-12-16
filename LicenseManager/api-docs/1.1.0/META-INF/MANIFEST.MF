@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Implementation-Title: LicenseManager
+Built-By: TeamCity
+Implementation-Build-Date: 20130425-0654
+Implementation-Vendor: NWTS Java Code
+Implementation-Vendor-Id: net.nicholaswilliams.java
+Name: net.nicholaswilliams.java.licensing
+Sealed: false
+Specification-Title: net.nicholaswilliams.java.licensing
+X-Compile-Target-JDK: 1.6
+Implementation-Version: 1.1.0
+Java-Specification-Vendor: Oracle Corporation
+Specification-Vendor: NWTS Java Code
+Java-Specification: Java Platform API Specification
+Created-By: TeamCity
+Specification-Vendor-Id: net.nicholaswilliams.java
+X-Compile-Source-JDK: 1.6
+Java-Vendor: Oracle Corporation
+Bundle-Vendor: NWTS Java Code
+Java-Version: 1.7.0_21
+Java-Specification-Version: 1.7
+Build-Jdk: 1.7.0_21
+Implementation-Build-Number: local
+Specification-Version: 1.1.0
+Archiver-Version: Plexus Archiver
+

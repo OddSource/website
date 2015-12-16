@@ -1,0 +1,74 @@
+# Prevent users from seeing the .htaccess file
+# This is typically done in the httpd.conf file by default, but this makes sure
+<Files ".ht*">
+	<IfModule !mod_access_compat.c>
+		Require all denied
+	</IfModule>
+	<IfModule mod_access_compat.c>
+		Order deny,allow
+		Deny from all
+	</IfModule>
+</Files>
+
+<IfModule mod_deflate.c>
+SetOutputFilter DEFLATE
+<FilesMatch "\\.(js|css|html|htm|php|xml|png|gif|jpg)$">
+SetOutputFilter DEFLATE
+</FilesMatch>
+</IfModule>
+
+# Setup URL Rewriting
+Options +FollowSymlinks
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} licensing\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/LicenseManager/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} rawsockets\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/RawSockets/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} socket\.net\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/RawSockets/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} ping\.net\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/Ping/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} traceroute\.net\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/Traceroute/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} geoip\.net\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/GeoIP/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} teamcity\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/TeamCityPlugins/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} validation\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/ValidationConstraints/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} converters\.jpa\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/JpaConverters/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} search\.jpa\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/JpaSearchFullText/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} fulltext\.jpa\.java\.nicholaswilliams\.net [NC]
+RewriteRule (.*) http://java.nicholaswilliams.net/JpaSearchFullText/$1 [R=301,L]
+
+RewriteRule ^donation-thanks(/?)$ /donation-thanks.php [PT,L]
+RewriteRule ^projects(/?)$ /projects.php [PT,L]
+RewriteRule ^license(/?)$ /license.php [PT,L]
+RewriteRule ^source(/?)$ /source.php [PT,L]
+
+RewriteRule ^news(/?)$ /news.php [PT,L]
+RewriteRule ^news/[0-9]+/[0-9]+/[0-9]+/([0-9]+)(/([A-Za-z0-9-_\.]+?)(/?))?$ /news/articles/$1.php [PT,L]
+
+RewriteRule ^([A-Za-z0-9-_]+?)/download(/?)$ /$1/download.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/introduction(/?)$ /$1/introduction.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/documentation(/?)$ /$1/documentation.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/samples(/?)$ /$1/samples.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/dependencies(/?)$ /$1/dependencies.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/RELEASE(/?)$ /$1/release-notes.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/release(/?)$ /$1/release-notes.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/CHANGELOG(/?)$ /$1/release-notes.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/changelog(/?)$ /$1/release-notes.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/RELEASENOTES(/?)$ /$1/release-notes.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/releasenotes(/?)$ /$1/release-notes.php [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/RELEASE(.[a-z]+)?$ /$1/RELEASE.TXT [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/release(.[A-Za-z]+)?$ /$1/RELEASE.TXT [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/CHANGELOG(.[A-Za-z]+)?$ /$1/RELEASE.TXT [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/changelog(.[A-Za-z]+)?$ /$1/RELEASE.TXT [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/RELEASENOTES(.[A-Za-z]+)?$ /$1/RELEASE.TXT [PT,L]
+RewriteRule ^([A-Za-z0-9-_]+?)/releasenotes(.[A-Za-z]+)?$ /$1/RELEASE.TXT [PT,L]
+
+RewriteRule ^download/(.+)$ /downloads/download.php?file=$1 [PT,L]
+

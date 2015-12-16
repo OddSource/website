@@ -1,0 +1,70 @@
+This file contains the PGP and GPG keys of NWTS Java Code developers. Please don't use them for email. Their 
+purpose is code signing.
+
+Users - Importing These Keys (depending on operating system):
+	pgp < KEYS                -OR-
+	gpg --import KEYS
+
+Users - Verifying Signatures (depending on operating system):
+	pgp <signature file> <release file>             -OR-
+	gpg --verify <signature file> <release file>
+
+Developers - Generating Public/Private Key Pair (depending on operating system):
+	pgp -kg          -OR-
+	gpg --gen-key
+
+Developers - Adding Public Keys to This File (depending on operating system):
+	pgp -kxa "<your name>" >> <this file>                                                   -OR-
+	(pgpk -ll "<your name>" && pgpk -xa "<your name>") >> <this file>                       -OR-
+	(gpg --list-sigs "<your name>" && gpg --armor --export "<your name>") >> <this file>.
+
+Developers - Signing (depending on operating system):
+	pgp -sab <release file>                     -OR-
+	gpg --armor --detach-sign <release file>
+**********************************************************************************************************************
+pub   2048D/ED446286 2012-02-23
+uid                  Nicholas Scott Williams (For signing NWTS Java Code) <nicholas@nicholaswilliams.net>
+sig 3        ED446286 2012-02-23  Nicholas Scott Williams (For signing NWTS Java Code) <nicholas@nicholaswilliams.net>
+sub   2048g/14F31BDE 2012-02-23
+sig          ED446286 2012-02-23  Nicholas Scott Williams (For signing NWTS Java Code) <nicholas@nicholaswilliams.net>
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2.0.16 (GNU/Linux)
+
+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
+EkF0+Ow+rN7Q6WapAL1mX9uCtuEenA==
+=pTA7
+-----END PGP PUBLIC KEY BLOCK-----

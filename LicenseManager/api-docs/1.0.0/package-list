@@ -1,0 +1,9 @@
+net.nicholaswilliams.java.licensing
+net.nicholaswilliams.java.licensing.encryption
+net.nicholaswilliams.java.licensing.exception
+net.nicholaswilliams.java.licensing.immutable
+net.nicholaswilliams.java.licensing.licensor
+net.nicholaswilliams.java.licensing.licensor.interfaces.abstraction
+net.nicholaswilliams.java.licensing.licensor.interfaces.text
+net.nicholaswilliams.java.licensing.licensor.interfaces.text.abstraction
+net.nicholaswilliams.java.licensing.samples

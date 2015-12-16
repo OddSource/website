@@ -1,0 +1,7 @@
+--------------------------------------------------------------------------------
+Version 0.9.2-RC1 (build 0.9.2.32)
+--------------------------------------------------------------------------------
+ - Initial release.
+ - KNOWN ISSUE: TC_SBN-2 the incrementOnceForChain setting for shared build 
+   number configurations is not implemented yet and is currently in its 
+   investigation phase.
